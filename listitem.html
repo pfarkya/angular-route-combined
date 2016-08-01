@@ -1,0 +1,28 @@
+<div class="responsive-table" ng-controller="ListController">
+    <table class="table table-hover table-inverse" id="table">
+        <thead>
+            <tr>
+                <th ng-repeat="key in keys">{{key.toUpperCase()}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in records">
+                <td ng-repeat="(key, value) in address" data-title="{{key}}"> {{ value }} </td>
+                <td data-title="ACTION">
+                    <button class="btn btn-primary update" data-toggle="modal" data-target="#modalUpdate" ng-click="updateModal(address)">Update</button>
+                    <button class="btn btn-danger delete" ng-click="delete(address.id,$index)">delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- end of table-->
+</div>
+<!-- end of responsive table-->
+<div class="container">
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous"><a class="loadMore" ng-click="previousPage()"><span aria-hidden="true">&larr;</span> Older</a></li>
+            <li class="next"><a class="loadMore" ng-click="nextPage()">Newer <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
+</div>
