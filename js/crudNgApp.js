@@ -5,18 +5,43 @@ angular.module('crudNgApp', ['ngRoute'])
                 templateUrl: 'listitem.html',
                 controller: 'ListController',
             })
-            // configure html5 to get links working on jsfiddle
-        $locationProvider.html5Mode(true);
+            //     // configure html5 to get links working on jsfiddle
+            // $locationProvider.html5Mode(true);
+
     })
-    .controller('mainController', ['$scope', function($scope) {
+    .controller('mainController', ['$scope', '$http', function($scope, $http) {
         $scope.hello = "hello";
+        $scope.keys = ["id", "name"];
+        return $http({
+            method: 'GET',
+            url: 'http://localhost:8080/records?_start=0&_limit=1'
+        }).then(function successCallback(response) {
+                // $log.log("hahahhhahha respond" + JSON.stringify(response));
+                if (response.data[0]) {
+                    $scope.keys = Object.keys(response.data[0]);
+                } else {
+                    alert("not record found");
+                }
+            },
+            function errorCallback(response) {
+                alert("not get" + response.message);
+            });
     }])
-    .controller('ListController', ['$scope', function($scope) {
+    .controller('ListController', ['$scope', '$http', function($scope, $http) {
         $scope.hello = "welcome";
         $scope.records = [];
-        $http('', url, post, function(status, response) {
-            // success
-        }, function(status, response) {
-            // error
-        });
+        return $http({
+            method: 'GET',
+            url: 'http://localhost:8080/records?_start=0&_limit=20'
+        }).then(function successCallback(response) {
+                // $log.log("hahahhhahha respond" + JSON.stringify(response));
+                if (response.data[0]) {
+                    $scope.records = response.data;
+                } else {
+                    alert("not record found");
+                }
+            },
+            function errorCallback(response) {
+                alert("not get" + response.message);
+            });
     }])
