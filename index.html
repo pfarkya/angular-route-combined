@@ -18,12 +18,13 @@
 <body ng-app="crudNgApp">
     <!-- Pills Link-->
     <div ng-controller="mainController">
-        <ul class="nav nav-pills nav-justified">
-            <li role="presentation" class="active"><a href="list">List All</a></li>
-            <li role="presentation"><a href="search">Search</a></li>
-            <li role="presentation"><a href="add">Add</a></li>
-        </ul>
-        {{hello}}
+        <div class="container">
+            <ul class="nav nav-pills nav-justified">
+                <li role="presentation" class="active"><a href="#/list">List All</a></li>
+                <li role="presentation"><a href="#/search">Search</a></li>
+                <li role="presentation"><a href="#/add">Add</a></li>
+            </ul>
+        </div>
         <div ng-view></div>
     </div>
     <script>
@@ -37,9 +38,9 @@
     <script src="includes/js/angular-route_1.5.8.js"></script>
     <!-- Custom JS -->
     <script src="js/crudNgApp.js"></script>
-    <script type="text/javascript">
+    <!--     <script type="text/javascript">
     angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
-    </script>
+    </script> -->
 </body>
 
 </html>

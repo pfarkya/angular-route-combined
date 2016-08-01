@@ -1,0 +1,11 @@
+<div class="addForm">
+	<h2>Add Details</h2>
+	<div class="form-group addForm col-sm-12" ng-repeat="key in keys | filter:'!id':true">
+		<label>{{key.toUpperCase()}}</label>
+		<input type="text" ng-model=dataAdd[key]>
+	</div>
+	<div>
+		<button ng-click='addItem()'>Add</button>
+	</div>
+	<div>{{showMessage}}</div>
+</div>
